@@ -24,7 +24,7 @@
     &:checked {
       + .navigation__menu {
         width: 40px;
-        right: 30px;
+        right: 3%;
         .burger-menu {
           span {
             display: none;
@@ -41,6 +41,7 @@
         z-index: 10;
         .logo{
           --color-circle: #0398FF;
+          transition: 1.3s;
         }
       }
 
@@ -62,7 +63,7 @@
     @include pos(fixed, $z: 1, $t: 0, $r: -250px);
     @include size (200px, 100%);
     transition: .3s;
-    padding-top: 25px;
+    padding-top: 30px;
     display: block;
   }
   

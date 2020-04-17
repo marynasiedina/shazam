@@ -1,0 +1,169 @@
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #e4e4e4;
+  background-color: #fff;
+
+  &__logo {
+    margin: auto 20px;
+  }
+
+  &__menu {
+    @include pos(fixed, $t:10px, $r:3%, $z:99);
+    padding: 10px;
+    transition: .3s;
+
+    @media (min-width: $desktop) {
+      display: none;
+    }
+  }
+
+  &__input {
+    display: none;
+    &:checked {
+      + .navigation__menu {
+        width: 40px;
+        right: 30px;
+        .burger-menu {
+          span {
+            display: none;
+          }
+          &::before {
+            transform: rotate(47deg);
+          }
+          &::after {
+            transform: rotate(-47deg);
+          }
+        }
+      }
+      ~.navigation__logo {
+        z-index: 10;
+        .logo{
+          --color-circle: #0398FF;
+        }
+      }
+
+      ~ .menu {
+        right: 0;
+        @include size(100%, 100vh);
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $desktop) {
+    @include pos(fixed, $z: 1, $t: 0, $r: -250px);
+    @include size (200px, 100%);
+    transition: .3s;
+    padding-top: 25px;
+    display: block;
+  }
+  
+  &__item {
+    font: 700 20px $roboto;
+    margin: auto 20px;
+
+    &:hover {
+      color: $blue
+    }
+  }
+
+  &__list {
+    text-decoration: none;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: currentColor;
+
+    @media (max-width: $desktop) {
+      display: block;
+      margin: 30px;
+    }
+  }
+}
+
+.search-form {
+  margin: auto 0;
+  position: relative;
+  border-radius: 30px;
+  background-color: #F4F4F4;
+  @include size(350px, 100%);
+
+  @media (max-width: $desktop){
+    @include size(200px, 100%);
+    margin: auto;
+  }
+  
+  &__search {
+    border-radius: 30px;
+    width: 100%;
+    font: 14px $roboto 200;
+    outline: 0;
+    background-color: transparent;
+    padding: 14px 50px 14px 20px;
+    &:focus {
+      box-shadow: 0 0 5px #08f;
+    }
+    @media (max-width: $mobile-portrait) {
+      display: none;
+      }
+  }
+
+  &__submit {
+    @include pos($r:10px, $t:50%);
+    transform: translateY(-50%);
+    background: transparent;
+    cursor: pointer;
+    @media (max-width: $mobile-portrait) {
+      right: 50px;
+    }
+  }
+}
+
+.icon-search {
+  fill: $blue;
+  @include size(23px);
+}
+
+.burger-menu {
+  @mixin line($top: 0) {
+    background: $blue;
+    border-radius: 3px;
+    position: absolute;
+    top: $top;
+    transition: .3s;
+    @include size( 100%, 3px)
+  }
+
+  @include size (25px, 20px);
+  display: block;
+  position: relative;
+
+  @media (min-width: $desktop) {
+    display: none;
+  }
+
+  span {
+  display: block;
+  transform: translateY(-50%);
+  @include line(50%);
+  }
+
+  &::before {
+    @include line();
+    content: '';
+    transform-origin: 0 0;
+  }
+
+  &::after {
+    @include line(calc(100% - 3px));
+    content: '';
+    transform-origin: 0 100%;
+  }
+}

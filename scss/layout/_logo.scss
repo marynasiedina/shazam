@@ -1,0 +1,16 @@
+.logo {
+  max-width: 120px;
+  width: 100vw;
+  max-height: 58px;
+  height: 100vh;
+  --color-circle: black;
+  cursor: pointer;
+  transition: all .6s ease-in-out;
+
+  &:hover {
+    --color-circle: #0398FF;
+    --opacity-circle: 1;
+    
+  }
+}
+
